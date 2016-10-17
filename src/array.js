@@ -49,9 +49,26 @@ function union(arrays) {
   return unitedArrays;
 }
 
+function flatten(array) {
+  var result = [];
+  function pushToResult(array) {
+    for (var i = 0; i < array.length; i++) {
+      if (array[i].constructor !== Array) {
+        result.push(array[i]);
+      } else {
+        pushToResult(array[i]);
+      }
+    }
+  }
+  pushToResult(array);
+  return result;
+}
+
+
 module.exports = {
   first: first,
   initial: initial,
   compact: compact,
   union: union,
+  flatten: flatten,
 };

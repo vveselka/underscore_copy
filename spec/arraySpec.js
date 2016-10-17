@@ -32,8 +32,13 @@ describe("A suite", function() {
   it('should return a copy of the array with all falsy values removed', function() {
     expect(array.compact([1, 0 , 4])).toEqual([1,4]);
   });
+
   it('shoulf return the union of the passed-in arrays', function() {
     expect(array.union([1], [1, 2], [8, 1, 8])).toEqual([1,2,8]);
+  });
+
+  it('should flatten a nested array', function() {
+    expect(array.flatten([1, [1,2], [8, [3, 4], [[5]]]])).toEqual([1,1,2,8,3,4,5]);
   });
 
 });
