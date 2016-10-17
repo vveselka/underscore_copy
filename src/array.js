@@ -37,9 +37,21 @@ function compact(array) {
   return resultArry;
 }
 
+function union(arrays) {
+  var unitedArrays = [];
+  for(var i = 0; i < arguments.length; i++) {
+    arguments[i].forEach(function (el) {
+      if(unitedArrays.indexOf(el) === -1) {
+        unitedArrays.push(el);
+      }
+    });
+  }
+  return unitedArrays;
+}
 
 module.exports = {
   first: first,
   initial: initial,
   compact: compact,
+  union: union,
 };
