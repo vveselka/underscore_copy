@@ -27,7 +27,19 @@ function initial(array, n) {
   }
 }
 
+function compact(array) {
+  var resultArry = [];
+  array.forEach(function(el) {
+    if(!(el === null || el === undefined || el === false || el === '' || el === 0 || el === NaN)) {
+      resultArry.push(el);
+    }
+  });
+  return resultArry;
+}
+
+
 module.exports = {
   first: first,
   initial: initial,
+  compact: compact,
 };

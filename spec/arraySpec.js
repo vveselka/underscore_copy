@@ -24,4 +24,13 @@ describe("A suite", function() {
   it('should return an error', function() {
     expect(array.initial([1], 2)).toBe("n should be less than array's length and more than 0");
   });
+
+  it('should return a copy of the array with all falsy values removed', function() {
+    expect(array.compact([1, false, null, 2,5, undefined])).toEqual([1,2,5]);
+  });
+
+  it('should return a copy of the array with all falsy values removed', function() {
+    expect(array.compact([1, 0 , 4])).toEqual([1,4]);
+  });
+
 });
