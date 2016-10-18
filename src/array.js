@@ -64,6 +64,23 @@ function flatten(array) {
   return result;
 }
 
+function intersection(arrays) {
+  function getCommonFrom2Arrays(arr1, arr2) {
+    var commonValues = [];
+    for(var i = 0; i < arr1.length; i++) {
+      if(arr2.indexOf(arr1[i]) > -1) {
+        commonValues.push(arr1[i]);
+      }
+    }
+    return commonValues;
+  }
+  var commonValues = arguments[0];
+  for(var i = 1; i < arguments.length - 1; i++) {
+      var commonValues = getCommonFrom2Arrays(commonValues, arguments[i + 1]);
+  }
+  return commonValues;
+}
+
 
 module.exports = {
   first: first,
@@ -71,4 +88,5 @@ module.exports = {
   compact: compact,
   union: union,
   flatten: flatten,
+  intersection: intersection,
 };

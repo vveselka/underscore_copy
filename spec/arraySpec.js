@@ -41,4 +41,12 @@ describe("A suite", function() {
     expect(array.flatten([1, [1,2], [8, [3, 4], [[5]]]])).toEqual([1,1,2,8,3,4,5]);
   });
 
+  it('should return the list of values that are the intersection of all the arrays [1,2]', function () {
+    expect(array.intersection([1,5,8,2], [5,2,1], [2,1], [9,4,1,2])).toEqual([1,2]);
+  });
+
+  it('should return the empty array because there are no intersections', function () {
+    expect(array.intersection([1,5,8,2], [5,2,1], [2,1], [9,4])).toEqual([]);
+  });
+
 });
