@@ -19,3 +19,21 @@ it('should produces a new array of values by mapping each property key in object
     return key*5;
   })).toEqual([5,10,15]);
 });
+
+it('should return the first value in array that passes a truth test', function() {
+  expect(collection.find([4,2,85,11,5], function(n) {
+    return n % 5 === 0;
+  })).toBe(85);
+});
+
+it('should return the first key in object where value passes a truth test', function() {
+  expect(collection.find({'David': 11, 'Elen': 22, 'Jon': 25}, function(n) {
+    return n >= 25;
+  })).toEqual('Jon');
+});
+
+it('should return undefined because no value passed a test', function() {
+  expect(collection.find({'David': 11, 'Elen': 22, 'Jon': 25}, function(n) {
+    return n > 25;
+  })).toEqual(undefined);
+});
