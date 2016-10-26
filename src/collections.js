@@ -43,8 +43,21 @@ function findWhere(list, properties) {
   return undefined;
 }
 
+function pluck(list, propertyName) {
+  var result = [];
+  for(var i = 0, len = list.length; i < len; i++) {
+    for(prop in list[i]) {
+      if(list[i].hasOwnProperty(prop) && prop === propertyName){
+        result.push(list[i][prop]);
+      }
+    }
+  }
+  return result;
+}
+
 module.exports = {
   map: map,
   find: find,
   findWhere: findWhere,
+  pluck: pluck,
 };

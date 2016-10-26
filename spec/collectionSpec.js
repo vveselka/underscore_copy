@@ -45,3 +45,15 @@ it('should return first element that matches key-value pairs listed in propertie
 it('should return underfined', function() {
   expect(collection.findWhere([{age:15, city:'London'}, {age:25, city:'NY', name:'Jon'}, {age:26, city:'NY', name:'David'}], {age:26, city:'NY', name:'Ivan'})).toEqual(undefined);
 });
+
+it('should return an array with property values where property is city', function() {
+  expect(collection.pluck([{age:15, city:'London'}, {age:25, city:'NY', name:'Jon'}, {age:26, city:'Kyiv', name:'David'}], 'city')).toEqual(['London', 'NY', 'Kyiv']);
+});
+
+it('should return an array with property values where property is city and not every object has city property', function() {
+  expect(collection.pluck([{age:15, name:'Ivan'}, {age:25, city:'NY', name:'Jon'}, {age:26, city:'Kyiv', name:'David'}], 'city')).toEqual(['NY', 'Kyiv']);
+});
+
+it('should return an empty array because no object has property city', function() {
+  expect(collection.pluck([{age:15, name:'Ivan'}, {age:25, name:'Jon'}], 'city')).toEqual([]);
+});
