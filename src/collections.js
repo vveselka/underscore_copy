@@ -30,7 +30,21 @@ function find(list, predicate) {
   }
 }
 
+function findWhere(list, properties) {
+  for(var i = 0, len = list.length; i < len; i++) {
+    var isFound = true;
+    for(pr in properties) {
+      if(!(list[i].hasOwnProperty(pr) && list[i][pr] === properties[pr])){
+        isFound = false;
+      }
+    }
+    if(isFound) return list[i];
+  }
+  return undefined;
+}
+
 module.exports = {
   map: map,
   find: find,
+  findWhere: findWhere,
 };

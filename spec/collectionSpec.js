@@ -37,3 +37,11 @@ it('should return undefined because no value passed a test', function() {
     return n > 25;
   })).toEqual(undefined);
 });
+
+it('should return first element that matches key-value pairs listed in properties', function() {
+  expect(collection.findWhere([{age:26, city:'London'}, {age:26, city:'NY', name:'Jon'}, {age:26, city:'NY', name:'Alex'}], {city: 'NY', age:26})).toEqual({age:26, city:'NY', name:'Jon'});
+});
+
+it('should return underfined', function() {
+  expect(collection.findWhere([{age:15, city:'London'}, {age:25, city:'NY', name:'Jon'}, {age:26, city:'NY', name:'David'}], {age:26, city:'NY', name:'Ivan'})).toEqual(undefined);
+});
