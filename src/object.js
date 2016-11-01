@@ -16,7 +16,18 @@ function allKeys(object) {
   return allKeys;
 }
 
+function pairs(object) {
+  var keyValueList = [];
+  for(pr in object) {
+    if(object.hasOwnProperty(pr)) {
+      keyValueList.push([pr, object[pr]]);
+    }
+  }
+  return keyValueList;
+}
+
 module.exports = {
   keys: keys,
   allKeys: allKeys,
+  pairs: pairs,
 }

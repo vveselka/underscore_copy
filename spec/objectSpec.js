@@ -19,3 +19,7 @@ it('should return an array with objects own properties and inherited properties'
   Test.prototype.age = 15;
   expect(object.allKeys(new Test('Jon'))).toEqual(['name', 'age']);
 });
+
+it('should conbert an object into a list of key velue pairs', function() {
+  expect(object.pairs({1: 'Test', 2 : 55, 'Three': undefined})).toEqual([['1', 'Test'], ['2', 55], ["Three", undefined]]);
+});
