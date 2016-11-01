@@ -26,8 +26,19 @@ function pairs(object) {
   return keyValueList;
 }
 
+function invert(object) {
+  var invertedObject = {}
+  for(pr in object) {
+    if(object.hasOwnProperty(pr)) {
+      invertedObject[object[pr]] = pr;
+    }
+  }
+  return invertedObject;
+}
+
 module.exports = {
   keys: keys,
   allKeys: allKeys,
   pairs: pairs,
+  invert: invert,
 }

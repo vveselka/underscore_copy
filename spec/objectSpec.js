@@ -23,3 +23,7 @@ it('should return an array with objects own properties and inherited properties'
 it('should conbert an object into a list of key velue pairs', function() {
   expect(object.pairs({1: 'Test', 2 : 55, 'Three': undefined})).toEqual([['1', 'Test'], ['2', 55], ["Three", undefined]]);
 });
+
+it('should return invered object', function() {
+  expect(object.invert({Kyiv: 'Ukraine', London:'England'})).toEqual({Ukraine:'Kyiv', England: 'London'});
+})
