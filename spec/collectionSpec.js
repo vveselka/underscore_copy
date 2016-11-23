@@ -57,3 +57,9 @@ it('should return an array with property values where property is city and not e
 it('should return an empty array because no object has property city', function() {
   expect(collection.pluck([{age:15, name:'Ivan'}, {age:25, name:'Jon'}], 'city')).toEqual([]);
 });
+
+it('should return 2 arrays one with elements satisfy predicate and whose eements do not satisfy predicate', function() {
+  expect(collection.partition([2,1,10,11], function(el) {
+    return el > 9;
+  })).toEqual([[10, 11], [2, 1]]);
+});

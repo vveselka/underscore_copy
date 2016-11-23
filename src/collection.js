@@ -34,11 +34,11 @@ function findWhere(list, properties) {
   for(var i = 0, len = list.length; i < len; i++) {
     var isFound = true;
     for(pr in properties) {
-      if(!(list[i].hasOwnProperty(pr) && list[i][pr] === properties[pr])){
+      if (!(list[i].hasOwnProperty(pr) && list[i][pr] === properties[pr])){
         isFound = false;
       }
     }
-    if(isFound) return list[i];
+    if (isFound) return list[i];
   }
   return undefined;
 }
@@ -47,7 +47,7 @@ function pluck(list, propertyName) {
   var result = [];
   for(var i = 0, len = list.length; i < len; i++) {
     for(prop in list[i]) {
-      if(list[i].hasOwnProperty(prop) && prop === propertyName){
+      if (list[i].hasOwnProperty(prop) && prop === propertyName){
         result.push(list[i][prop]);
       }
     }
@@ -55,9 +55,21 @@ function pluck(list, propertyName) {
   return result;
 }
 
+function partition(array, predicate) {
+  var predicateTrue = [];
+  var predicateFalse = [];
+  for(var i = 0; i < array.length; i++) {
+    if (predicate(array[i])) {
+      predicateTrue.push(array[i])
+    } else predicateFalse.push(array[i]);
+  }
+  return [predicateTrue, predicateFalse];
+}
+
 module.exports = {
   map: map,
   find: find,
   findWhere: findWhere,
   pluck: pluck,
+  partition: partition,
 };
